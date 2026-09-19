@@ -1,50 +1,58 @@
 using UnityEngine;
-
 public class RockSpawner : MonoBehaviour
 {
-    [Header("Rock")]
+    [Header("Obstacles")]
     public GameObject rockPrefab;
-
+    public GameObject logPrefab;
     [Header("Spawning")]
     public float spawnDistance = 15f;
-    public float spawnInterval = 3f;
+    public float minimumObstacleDistance = 8f;
+    [Header("Obstacle Position")]
     public float groundY = -2f;
-
+    public float spawnZ = 0f;
     private Transform player;
-    private float nextSpawnTime;
-
+    private float lastSpawnX = -100f;
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        nextSpawnTime = Time.time + 2f;
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            player = playerObject.transform;
+        }
+        else
+        {
+            Debug.LogError("RockSpawner: No GameObject with the 'Player' tag was found!");
+        }
     }
-
     void Update()
     {
         if (player == null)
             return;
-
-        if (Time.time >= nextSpawnTime)
+        float spawnX = player.position.x + spawnDistance;
+        if (spawnX >= lastSpawnX + minimumObstacleDistance)
         {
-            SpawnRock();
-
-            nextSpawnTime = Time.time + spawnInterval;
+            SpawnObstacle(spawnX);
+            lastSpawnX = spawnX;
         }
     }
-
-    void SpawnRock()
+    void SpawnObstacle(float spawnX)
     {
-        float spawnX = player.position.x + spawnDistance;
-
         Vector3 spawnPosition = new Vector3(
             spawnX,
             groundY,
-            0f
+            spawnZ
         );
-
+        GameObject obstacleToSpawn;
+        if (Random.Range(0, 2) == 0)
+        {
+            obstacleToSpawn = rockPrefab;
+        }
+        else
+        {
+            obstacleToSpawn = logPrefab;
+        }
         Instantiate(
-            rockPrefab,
+            obstacleToSpawn,
             spawnPosition,
             Quaternion.identity
         );
