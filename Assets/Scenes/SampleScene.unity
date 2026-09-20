@@ -487,6 +487,55 @@ RectTransform:
   m_AnchoredPosition: {x: 8, y: -40}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0, y: 1}
+--- !u!1 &176993875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 176993877}
+  - component: {fileID: 176993876}
+  m_Layer: 0
+  m_Name: HeartSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &176993876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176993875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271cf813e697dbd42abad902b845838b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeartSpawner
+  heartPrefab: {fileID: 9096300568976449164, guid: ff4468725b8407c4eb784c4bcdf24710, type: 3}
+  player: {fileID: 883257662}
+  spawnDistance: 15
+  spawnEveryMeters: 200
+  spawnY: -1.5
+--- !u!4 &176993877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176993875}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.46102, y: -0.92379, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &200263363
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,11 +1323,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RockSpawner
   rockPrefab: {fileID: 6849615166411652815, guid: 88072259d3bc8e14e8fd35dfe8e783f3, type: 3}
-  logPrefab: {fileID: 1262822461422608841, guid: 28e01351af1483e459c1322b5018d88b, type: 3}
   spawnDistance: 15
-  minimumObstacleDistance: 8
+  spawnInterval: 3
   groundY: -3.3
-  spawnZ: 0
+  difficultyManager: {fileID: 0}
 --- !u!4 &704263433
 Transform:
   m_ObjectHideFlags: 0
@@ -2825,6 +2873,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447499670}
   m_CullTransparentMesh: 1
+--- !u!1 &1450133815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1450133817}
+  - component: {fileID: 1450133816}
+  m_Layer: 0
+  m_Name: DifficultyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1450133816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450133815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5fcdf0191ed42e45b817742a51a5a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultyManager
+  player: {fileID: 883257662}
+  difficultyLevel: 1
+  maximumDifficultyLevel: 10
+  distancePerLevel: 250
+  startingObstacleInterval: 3
+  minimumObstacleInterval: 0.8
+  maximumObstacleSpeed: 8
+  startingObstacleSpeed: 5
+  startingHeartWindow: 150
+  minimumHeartWindow: 100
+  startingShieldWindow: 300
+  minimumShieldWindow: 200
+  obstacleRandomVariation: 0.25
+  speedRandomVariation: 0.5
+  useRandomVariation: 1
+  allowDifficultyBursts: 1
+  minimumBurstDistance: 500
+  burstDuration: 10
+  burstMultiplier: 1.5
+  eventCheckInterval: 25
+  allowCalmPeriods: 1
+  calmDuration: 8
+  calmMultiplier: 0.65
+  difficultyText: {fileID: 0}
+  distanceText: {fileID: 0}
+--- !u!4 &1450133817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450133815}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.46102, y: -0.92379, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1480636083
 GameObject:
   m_ObjectHideFlags: 0
@@ -3455,9 +3572,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShieldSpawner
   shieldPrefab: {fileID: 459186874206589359, guid: b3551c62dcd153c4b9b8364c9be76a2f, type: 3}
   player: {fileID: 883257662}
+  windowSize: 150
+  gapBetweenWindows: 10
   spawnDistance: 15
-  minimumSpawnTime: 8
-  maximumSpawnTime: 15
   spawnY: -1.5
 --- !u!4 &1729031669
 Transform:
@@ -3958,3 +4075,5 @@ SceneRoots:
   - {fileID: 2042768429}
   - {fileID: 1729031669}
   - {fileID: 1057107348}
+  - {fileID: 176993877}
+  - {fileID: 1450133817}

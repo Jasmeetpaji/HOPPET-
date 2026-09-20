@@ -84,6 +84,13 @@ public class GameOverManager : MonoBehaviour
             GameOver();
         }
     }
+
+    public void AddLife()
+    {
+        currentLives++;
+        UpdateLivesUI();
+    }
+    
     void UpdateLivesUI()
     {
         if (livesText != null)

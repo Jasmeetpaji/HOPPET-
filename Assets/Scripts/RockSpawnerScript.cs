@@ -1,58 +1,76 @@
 using UnityEngine;
+
 public class RockSpawner : MonoBehaviour
 {
-    [Header("Obstacles")]
+    [Header("Rock")]
     public GameObject rockPrefab;
-    public GameObject logPrefab;
+
     [Header("Spawning")]
     public float spawnDistance = 15f;
-    public float minimumObstacleDistance = 8f;
-    [Header("Obstacle Position")]
+    public float spawnInterval = 3f;
     public float groundY = -2f;
-    public float spawnZ = 0f;
+
+    [Header("Difficulty")]
+    public DifficultyManager difficultyManager;
+
     private Transform player;
-    private float lastSpawnX = -100f;
+    private float nextSpawnTime;
+
     void Start()
     {
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        if (playerObject != null)
+        GameObject playerObject =
+            GameObject.FindGameObjectWithTag("Player");
+
+        if (playerObject == null)
         {
-            player = playerObject.transform;
+            Debug.LogError(
+                "RockSpawner: No GameObject with the 'Player' tag was found!"
+            );
+
+            return;
         }
-        else
-        {
-            Debug.LogError("RockSpawner: No GameObject with the 'Player' tag was found!");
-        }
+
+        player = playerObject.transform;
+
+        nextSpawnTime = Time.time + 2f;
     }
+
     void Update()
     {
         if (player == null)
             return;
-        float spawnX = player.position.x + spawnDistance;
-        if (spawnX >= lastSpawnX + minimumObstacleDistance)
+
+        if (Time.time >= nextSpawnTime)
         {
-            SpawnObstacle(spawnX);
-            lastSpawnX = spawnX;
+            SpawnRock();
+
+            float currentInterval = spawnInterval;
+
+            if (difficultyManager != null)
+            {
+                currentInterval =
+                    difficultyManager.GetObstacleInterval();
+            }
+
+            nextSpawnTime =
+                Time.time + currentInterval;
         }
     }
-    void SpawnObstacle(float spawnX)
+
+    void SpawnRock()
     {
-        Vector3 spawnPosition = new Vector3(
-            spawnX,
-            groundY,
-            spawnZ
-        );
-        GameObject obstacleToSpawn;
-        if (Random.Range(0, 2) == 0)
-        {
-            obstacleToSpawn = rockPrefab;
-        }
-        else
-        {
-            obstacleToSpawn = logPrefab;
-        }
+        float spawnX =
+            player.position.x + spawnDistance;
+
+        Vector3 spawnPosition =
+            new Vector3(
+                spawnX,
+                groundY,
+                0f
+            );
+
         Instantiate(
-            obstacleToSpawn,
+            rockPrefab,
             spawnPosition,
             Quaternion.identity
         );

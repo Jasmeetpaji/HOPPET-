@@ -4,18 +4,29 @@ public class ShieldSpawner : MonoBehaviour
 {
     [Header("Shield")]
     public GameObject shieldPrefab;
+
     [Header("Player")]
     public Transform player;
-    [Header("Spawning")]
+
+    [Header("Random Spawn Windows")]
+    public float windowSize = 150f;
+    public float gapBetweenWindows = 10f;
+
+    [Header("Spawn Position")]
     public float spawnDistance = 15f;
-    public float minimumSpawnTime = 8f;
-    public float maximumSpawnTime = 15f;
-    [Header("Height")]
     public float spawnY = -1.5f;
-    private float nextSpawnTime;
+    private float startX;
+    private float nextWindowStart;
+    private float nextSpawnDistance;
+
     void Start()
     {
-        SetNextSpawnTime();
+        if (player == null)
+            return;
+
+        startX = player.position.x;
+        nextWindowStart = 1f;
+        ChooseRandomSpawnDistance();
     }
 
     void Update()
@@ -23,20 +34,28 @@ public class ShieldSpawner : MonoBehaviour
         if (player == null)
             return;
 
-        if (Time.time >= nextSpawnTime)
+        float distance =
+            player.position.x - startX;
+
+        if (distance >= nextSpawnDistance)
         {
             SpawnShield();
+            
+            nextWindowStart +=
+                windowSize + gapBetweenWindows;
 
-            SetNextSpawnTime();
+            ChooseRandomSpawnDistance();
         }
     }
 
-    void SetNextSpawnTime()
+    void ChooseRandomSpawnDistance()
     {
-        nextSpawnTime = Time.time +
+        float windowEnd =
+            nextWindowStart + windowSize;
+            nextSpawnDistance =
             Random.Range(
-                minimumSpawnTime,
-                maximumSpawnTime
+                nextWindowStart,
+                windowEnd
             );
     }
 
