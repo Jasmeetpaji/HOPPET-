@@ -10,11 +10,15 @@ public class InventoryManager : MonoBehaviour
     [Header("Navigation Buttons")]
     public Button previousButton;
     public Button nextButton;
-    [Header("Skins")]
+    [Header("Original Skins")]
     public Sprite defaultSkin;
     public Sprite ninjaSkin;
     public Sprite kingSkin;
     public Sprite cyberSkin;
+    [Header("Shop Skins")]
+    public Sprite ds1Skin;
+    public Sprite ds2Skin;
+    public Sprite ds3Skin;
     private Sprite[] skins;
     private string[] skinNames;
     private int currentSkinIndex = 0;
@@ -25,16 +29,23 @@ public class InventoryManager : MonoBehaviour
             defaultSkin,
             ninjaSkin,
             kingSkin,
-            cyberSkin
+            cyberSkin,
+            ds1Skin,
+            ds2Skin,
+            ds3Skin
         };
         skinNames = new string[]
         {
             "DEFAULT",
             "NINJA",
             "KING",
-            "CYBER"
+            "CYBER",
+            "DS1",
+            "DS2",
+            "DS3"
         };
-        string equippedSkin = PlayerPrefs.GetString("EquippedSkin", "DEFAULT");
+        string equippedSkin =
+            PlayerPrefs.GetString("EquippedSkin", "DEFAULT");
         currentSkinIndex = 0;
         for (int i = 0; i < skinNames.Length; i++)
         {
@@ -67,6 +78,24 @@ public class InventoryManager : MonoBehaviour
     public void EquipCurrentSkin()
     {
         string selectedSkin = skinNames[currentSkinIndex];
+        if (selectedSkin == "DS1" &&
+            PlayerPrefs.GetInt("Skin1Unlocked", 0) == 0)
+        {
+            Debug.Log("DS1 is locked!");
+            return;
+        }
+        if (selectedSkin == "DS2" &&
+            PlayerPrefs.GetInt("Skin2Unlocked", 0) == 0)
+        {
+            Debug.Log("DS2 is locked!");
+            return;
+        }
+        if (selectedSkin == "DS3" &&
+            PlayerPrefs.GetInt("Skin3Unlocked", 0) == 0)
+        {
+            Debug.Log("DS3 is locked!");
+            return;
+        }
         PlayerPrefs.SetString("EquippedSkin", selectedSkin);
         PlayerPrefs.Save();
         UpdateInventory();
@@ -84,15 +113,37 @@ public class InventoryManager : MonoBehaviour
         }
         if (equipButtonText != null)
         {
-            string equippedSkin =
-                PlayerPrefs.GetString("EquippedSkin", "DEFAULT");
-            if (equippedSkin.ToUpper() == skinNames[currentSkinIndex])
+            string selectedSkin = skinNames[currentSkinIndex];
+            bool unlocked = true;
+            if (selectedSkin == "DS1")
             {
-                equipButtonText.text = "EQUIPPED";
+                unlocked = PlayerPrefs.GetInt("Skin1Unlocked", 0) == 1;
+            }
+            else if (selectedSkin == "DS2")
+            {
+                unlocked = PlayerPrefs.GetInt("Skin2Unlocked", 0) == 1;
+            }
+            else if (selectedSkin == "DS3")
+            {
+                unlocked = PlayerPrefs.GetInt("Skin3Unlocked", 0) == 1;
+            }
+            if (!unlocked)
+            {
+                equipButtonText.text = "LOCKED";
             }
             else
             {
-                equipButtonText.text = "EQUIP";
+                string equippedSkin =
+                    PlayerPrefs.GetString("EquippedSkin", "DEFAULT");
+
+                if (equippedSkin.ToUpper() == selectedSkin)
+                {
+                    equipButtonText.text = "EQUIPPED";
+                }
+                else
+                {
+                    equipButtonText.text = "EQUIP";
+                }
             }
         }
     }
