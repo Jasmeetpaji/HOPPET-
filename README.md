@@ -64,6 +64,9 @@ The rabbit will run through the level. Collect carrots, avoid the obstacles and 
 
 Try to survive as long as possible and beat your previous distance.
 
+how to run the game locally:
+this is the game's link for the web playable version available on itch.io : https://jasmeetsingh.itch.io/hoppet
+
 Made by
 
 Dean(jasmeet singh) and var
