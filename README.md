@@ -44,6 +44,9 @@ I made the game using Unity and C#.
 
 I also used Git and GitHub to save and manage the project.
 
+Images of the project: ![Uploading Desktop Screenshot 2026.09.25 - 22.38.56.49.png…]()
+
+
 What I learned
 
 I learned a lot while making this game.
