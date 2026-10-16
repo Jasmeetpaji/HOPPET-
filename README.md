@@ -1,77 +1,45 @@
-HOPPET
+#Hoppet!
 
-HOPPET is a 2D endless runner game that I made in Unity.
+A retro-style 2D endless runner made with Unity
 
-The game is basically about a rabbit that keeps running and you have to survive for as long as you can. You have to avoid rocks and logs, collect carrots and use different power ups while trying to get a high distance.
+##Description
 
-I wanted to make something that was simple but still had a lot of things in it.
+Hoppet is a 2D infinite runner where you play as a rabbit tring to survive for as long as possible while avoiding obstacles and collecting as you progress.The gold of the game is simply to Rack up as many carrots and much of a distance score as possible,avoiding various,timing your jumps and avoid losing all your lives.
 
-What I added
+Various items such as sheilds will spawn throughout as you progress,collect these items to help your rabbit survive better,the farther you get and the more carrots you collect,The more rabbit skins you can Equip using those carrots!
 
-The game has an endless runner system with random obstacles.
+##Controls include
+Jump: Automatic.
+Hop forward: D.
+Hop backward: A.
 
-There is a carrot system where you can collect carrots and keep them even after closing the game.
-
-I also added mystery boxes which give you a random amount of carrots.
-
-There is a lives system so the player can get hit a few times before the game ends.
-
-There are also different power ups like the shield, speed boost and jetpack.
-
-Hearts can also spawn in the game and give the player an extra life.
-
-The game keeps track of the distance you travel and saves your top distance.
-
-There is a game over screen with the final distance, top distance, restart button and main menu button.
-
-I also made a shop where carrots can be used to buy different skins.
-
-There is an inventory where you can see the skins you own and choose which one you want to use.
-
-I also added an About section in the main menu.
-
-Sounds
-
-I added background music to the main menu and the actual game.
-
-There are also button sounds and sounds for the different objects and power ups.
-
-When the player dies, the game music stops and the game over sound plays.
-
-What I used
-
-I made the game using Unity and C#.
-
-I also used Git and GitHub to save and manage the project.
-
-Images of the project: ![Uploading Desktop Screenshot 2026.09.25 - 22.38.56.49.png…]()
+##ScreenShots
+<img width="1108" height="512" alt="image" src="https://github.com/user-attachments/assets/5388880f-2052-4b7f-9289-9d59c441104f" />
+<img width="1108" height="517" alt="image" src="https://github.com/user-attachments/assets/d1580f9c-7460-4f14-84e0-cfc13e9fe006" />
+<img width="1116" height="513" alt="image" src="https://github.com/user-attachments/assets/dc94666e-108e-46c3-ac1f-99536fd147f5" />
+<img width="1114" height="525" alt="image" src="https://github.com/user-attachments/assets/4bb436fd-912f-403d-a047-a2f12d8b12de" />
 
 
-What I learned
+##Getting Started
 
-I learned a lot while making this game.
+###Dependencies
 
-I learned how to use Unity scenes, GameObjects, prefabs, colliders, Rigidbody2D, UI, buttons, C# scripts, PlayerPrefs, spawning systems and audio.
+1. Unity 6
+2. C#
+3. Visual Studio code
+4. TextMeshPro
+5. Unity 2D physics
+6. Git and GitHub
 
-I also learned how to use Git and GitHub for my projects.
+###Installing
+you can directly play this game on your web browser! This is the game's link for the web playable version available on itch.io : https://jasmeetsingh.itch.io/hoppet
 
-There were honestly a lot of bugs while making this game and some things that I thought would be easy ended up taking a lot longer than I expected.
+###Executing the program
+Open the Web version of the game in your browser,Press the play button,The game will begin automatically,Use A and D to control your character
 
-But fixing those bugs helped me understand Unity a lot better.
-
-How to play
-
-Start the game from the main menu and press Play.
-
-The rabbit will run through the level. Collect carrots, avoid the obstacles and use the power ups when you find them.
-
-Try to survive as long as possible and beat your previous distance.
-
-how to run the game locally:
-this is the game's link for the web playable version available on itch.io : https://jasmeetsingh.itch.io/hoppet
-
-Made by
+###Made by
 
 Dean(jasmeet singh) and var
 
-This is one of my Unity projects and I'm still learning and adding things to it.
+##Liscence
+This project was made as a personal game Development project with me and my friend
