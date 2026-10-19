@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: 3f6edef0037224a43add164a376ba8b1
+guid: 16d5b041ec69f204dae3edb6468fb78e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6284472497396405470
-    second: ChatGPT Image Sep 17, 2026, 05_47_00 PM_0
+      213: -6087826517422993385
+    second: 8bit Vectors - Download Free High-Quality Vectors _ Magnific (formerly
+      Freepik)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +47,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +114,14 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChatGPT Image Sep 17, 2026, 05_47_00 PM_0
+      name: 8bit Vectors - Download Free High-Quality Vectors _ Magnific (formerly
+        Freepik)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1672
-        height: 941
+        width: 626
+        height: 376
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 22ba9f76f8119c8a0800000000000000
-      internalID: -6284472497396405470
+      spriteID: 7109cce7902b38ba0800000000000000
+      internalID: -6087826517422993385
       vertices: []
       indices: 
       edges: []
@@ -138,7 +140,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +150,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ChatGPT Image Sep 17, 2026, 05_47_00 PM_0: -6284472497396405470
+      8bit Vectors - Download Free High-Quality Vectors _ Magnific (formerly Freepik)_0: -6087826517422993385
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
